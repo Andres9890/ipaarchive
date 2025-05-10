@@ -696,9 +696,8 @@ def export_json():
                 entry[6] = subIdx
                 entry[7] = sub_file
 
-            if i > 0:
-                fp.write(',\n')
-            fp.write(json.dumps(entry, separators=(',', ':')))
+            fp.write(json.dumps(entry, separators=(',', ':')) + ',\n')
+        fp.seek(max(fp.tell(), 3) - 2)
         fp.write(']')
         print('\r', end='')
     print(f'write ipa.json: {total} entries')
